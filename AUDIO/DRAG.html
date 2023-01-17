@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title> Drag n Drop Practical</title>
+            <style>
+#div1{
+      width: 400px;
+      height: 300px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+ }
+.img
+    {
+      display:inline-block;
+    }
+</style>
+<!-- This is a code for the scripting in dragging -->
+<script>
+<!-- 1.This is a code whatever u r dragging is going to ready for transefer -->
+function drag(ev) 
+{
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+<!-- basically  html page allow to drop the data & write allow event where to drop  -->
+function allowDrop(ev) 
+{
+  ev.preventDefault();
+}
+<!-- This is a code for the do the dropping -->
+function drop(ev)
+ {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+    <h3> Drag n Drop the Image </h3>
+  <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <img src="C:\Users\Guruprasad\Pictures\Screenshots\Screenshot (468).png" width="300px" height:"300px" alt=" draggable="true" ondragstart="drag(event)" id="drag1">
+</body>
+</html>
